@@ -27,15 +27,11 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     async function loadFoods(): Promise<void> {
-      await api.get('/foods').then(response => {
-        setFoods(response.data);
-      });
-
-      loadFoods();
+      await api.get('foods').then(response => setFoods(response.data));
     }
 
     loadFoods();
-  }, [foods]);
+  }, []);
 
   async function handleAddFood(
     food: Omit<IFoodPlate, 'id' | 'available'>,
